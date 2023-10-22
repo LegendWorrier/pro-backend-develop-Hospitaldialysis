@@ -1,0 +1,25 @@
+Id,Type,Order,Name,DisplayName,OptionType,Multi
+-1,0,0,pain,Pain,1,f
+-2,0,1,chest,Chest discomfort,1,f
+-3,0,2,dyspnea,Dyspnea,1,f
+-4,0,3,fever,Fever,1,f
+-5,0,4,head,Headache,1,f
+-6,0,5,vomit,Nausea/Vomit,1,f
+-7,0,6,sleep,Sleep disturbance,1,f
+-8,0,7,bleeding,Bleeding,1,f
+-9,0,8,itching,Itching,1,f
+-10,0,9,neck,Engorged neck vein,1,f
+-11,0,10,pale,Pale,1,f
+-12,0,11,edema,Edema,1,f
+-13,0,12,oral,Poor oral intake,1,f
+-14,0,13,psycho,Psychosocial problem,1,f
+-15,0,14,other,Other,1,f
+-16,0,15,inflame,Inflammation,1,f
+-17,0,16,thrill,Thrill,1,f
+-18,0,17,bruit,Bruit,1,t
+-19,0,18,machine,Machine Test,1,f
+-20,0,19,fall,High risk of fall due location,1,f
+-21,1,0,complication,Complication,1,t
+-22,1,1,technical,Technical Complication,1,t
+-23,1,2,nursing,Nursing Intervention,1,t
+-24,1,3,health,Health Education,1,t

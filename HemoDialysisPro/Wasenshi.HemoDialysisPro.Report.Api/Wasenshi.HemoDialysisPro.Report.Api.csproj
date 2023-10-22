@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <UserSecretsId>a6fc03e5-2f2b-48f0-a8b4-cae6a33c7564</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Configurations>Debug;Release;UNIT_TEST</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Wasenshi.HemoDialysisPro.Report.Api.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>Wasenshi.HemoDialysisPro.Report.Api.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UNIT_TEST|AnyCPU'">
+    <DocumentationFile>Wasenshi.HemoDialysisPro.Report.Api.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="reports\**" />
+    <Content Remove="reports\**" />
+    <EmbeddedResource Remove="reports\**" />
+    <None Remove="reports\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="AWS.Logger.SeriLog" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="6.0.16" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.16" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
+    <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="5.2.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ServiceStack\ServiceStack.RedisMq\ServiceStack.RedisMq.csproj" />
+    <ProjectReference Include="..\..\ServiceStack\ServiceStack.Redis\src\ServiceStack.Redis\ServiceStack.Redis.Core.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Report\Wasenshi.HemoDialysisPro.Report.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.WebUtils\Wasenshi.HemoDialysisPro.WebUtils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <!-- ============== NET 6 deprecated support for libgdiplus (system.drawing.common on non-window) 
+	    this flag is a workaround until we can upgrade telerik or find other lib that really support NET 6+ ===================== -->
+	  <RuntimeHostConfigurationOption Include="System.Drawing.EnableUnixSupport" Value="true" />
+  </ItemGroup>
+
+</Project>

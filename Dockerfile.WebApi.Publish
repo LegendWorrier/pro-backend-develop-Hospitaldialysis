@@ -1,0 +1,41 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS publish
+WORKDIR /src
+COPY . .
+RUN cp NuGet.Config /root/
+RUN dotnet restore "HemoDialysisPro/Wasenshi.HemoDialysisPro.Web.Api/Wasenshi.HemoDialysisPro.Web.Api.csproj" --runtime alpine-x64
+WORKDIR "/src/HemoDialysisPro/Wasenshi.HemoDialysisPro.Web.Api"
+RUN dotnet publish "Wasenshi.HemoDialysisPro.Web.Api.csproj" -c Release -o /app/publish \
+  --no-restore \  
+  --runtime alpine-x64 \
+  --self-contained true \
+  /p:PublishTrimmed=true
+#  /p:PublishSingleFile=true
+
+FROM mcr.microsoft.com/dotnet/runtime-deps:6.0-alpine3.16 AS final
+RUN echo http://dl-cdn.alpinelinux.org/alpine/v3.17/main >> /etc/apk/repositories \
+  && echo http://dl-cdn.alpinelinux.org/alpine/v3.17/community >> /etc/apk/repositories
+RUN apk add --no-cache libgdiplus \
+# timezone
+    && apk add --no-cache tzdata icu-libs \
+# AWS s3fs
+#    && apk add --no-cache s3fs-fuse \
+# upgrade musl to remove potential vulnerability
+    && apk upgrade musl \
+#clean
+    && rm -rf /var/lib/apt/lists/* \
+# create a new user and change directory ownership
+    && adduser --disabled-password \
+  --home /app \
+  --gecos '' dotnetuser && chown -R dotnetuser /app
+
+ENV DOTNET_RUNNING_IN_CONTAINER=true
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+ENV TZ Asia/Bangkok
+
+# impersonate into the new user
+USER dotnetuser
+WORKDIR /app
+EXPOSE 80
+COPY --from=publish /app/publish .
+
+ENTRYPOINT ["./Wasenshi.HemoDialysisPro.Web.Api"]

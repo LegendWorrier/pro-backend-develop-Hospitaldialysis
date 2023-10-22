@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>6915c37e-a56c-4f23-8a15-2df0b6df3f9a</UserSecretsId>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <SignAssembly>false</SignAssembly>
+	<TransformOnBuild>true</TransformOnBuild>
+	<TransformOutOfDateOnly>false</TransformOutOfDateOnly>
+	<DefineConstants Condition=" '$(IsTest)' == 'true' ">$(DefineConstants);TEST</DefineConstants>
+	<Configurations>Debug;Release;UNIT_TEST</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>Wasenshi.HemoDialysisPro.Web.Api.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UNIT_TEST|AnyCPU'">
+    <DocumentationFile>Wasenshi.HemoDialysisPro.Web.Api.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+    <DefineConstants>$(DefineConstants);TEST;RELEASE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Wasenshi.HemoDialysisPro.Web.Api.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWS.Logger.SeriLog" Version="3.0.0" />
+    <PackageReference Include="DateOnlyTimeOnly.AspNet" Version="2.1.1" />
+    <PackageReference Include="DateOnlyTimeOnly.AspNet.Swashbuckle" Version="2.1.1" />
+    <PackageReference Include="DotNetZip" Version="1.16.0" />
+    <PackageReference Include="FluentHttpClient" Version="2.1.0" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.8.0" />
+    <PackageReference Include="Hangfire.Redis.StackExchange" Version="1.8.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.16" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="6.0.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.32.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
+    <PackageReference Include="RediSearchClient" Version="1.0.0" />
+    <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="5.2.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+    <PackageReference Include="Weikio.PluginFramework.AspNetCore" Version="1.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AuthPolicy\Wasenshi.AuthPolicy\Wasenshi.AuthPolicy.csproj" />
+    <ProjectReference Include="..\..\ServiceStack\ServiceStack.RedisMq\ServiceStack.RedisMq.csproj" />
+    <ProjectReference Include="..\..\ServiceStack\ServiceStack.Redis\src\ServiceStack.Redis\ServiceStack.Redis.Core.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Jobs\Wasenshi.HemoDialysisPro.Jobs.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Maps\Wasenshi.HemoDialysisPro.Maps.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Models\Wasenshi.HemoDialysisPro.Models.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Repositories\Wasenshi.HemoDialysisPro.Repositories.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Services\Wasenshi.HemoDialysisPro.Services.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.ViewModels\Wasenshi.HemoDialysisPro.ViewModels.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.WebUtils\Wasenshi.HemoDialysisPro.WebUtils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<TrimmerRootAssembly Include="mscorlib" />
+	</ItemGroup>
+
+</Project>

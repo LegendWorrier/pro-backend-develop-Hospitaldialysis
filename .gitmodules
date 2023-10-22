@@ -1,0 +1,9 @@
+[submodule "CsvHelper.Excel"]
+	path = CsvHelper.Excel
+url=git@github.com:Wasenshi123/CsvHelper.Excel.git
+[submodule "ServiceStack"]
+	path = ServiceStack
+	url = https://github.com/Wasenshi123/ServiceStack
+[submodule "EFCoreExtensions"]
+	path = EFCoreExtensions
+	url = https://github.com/Wasenshi123/efcore-extensions

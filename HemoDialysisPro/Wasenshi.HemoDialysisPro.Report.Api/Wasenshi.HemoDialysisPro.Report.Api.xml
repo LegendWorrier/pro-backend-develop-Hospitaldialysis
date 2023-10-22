@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wasenshi.HemoDialysisPro.Report.Api</name>
+    </assembly>
+    <members>
+        <member name="F:Wasenshi.HemoDialysisPro.Report.Api.APIValidationMiddleware.cache">
+            <summary>
+            For improving performance and reduce DB round trip
+            </summary>
+        </member>
+        <member name="T:Wasenshi.HemoDialysisPro.Report.Api.LogConfig.LoggingMiddleware">
+            <summary>
+            This middleware helps logging to be able to capture Response Body.
+            It buffers the body, let other middlewares use and read the body and then re-assign the original body for output.
+            </summary>
+        </member>
+    </members>
+</doc>

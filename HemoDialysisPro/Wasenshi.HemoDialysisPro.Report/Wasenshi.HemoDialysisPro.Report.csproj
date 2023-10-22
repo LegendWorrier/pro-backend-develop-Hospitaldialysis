@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Configurations>Debug;Release;UNIT_TEST</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="styles\telerikReportViewer-15.1.21.616.css" />
+    <None Remove="templates\telerikReportViewerTemplate-15.1.21.616.html" />
+    <None Remove="templates\telerikReportViewerTemplate-FA-15.1.21.616.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MessagePack" Version="2.4.59" />
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="Telerik.Reporting" Version="15.1.21.616" />
+    <PackageReference Include="Telerik.Reporting.Services.AspNetCore" Version="15.1.21.616" />
+    <PackageReference Include="Telerik.Reporting.WebServiceDataSource" Version="15.1.21.616" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Repositories\Wasenshi.HemoDialysisPro.Repositories.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Services\Wasenshi.HemoDialysisPro.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="styles\telerikReportViewer-15.1.21.616.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+	<Content Include="templates\telerikReportViewerTemplate-15.1.21.616.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\telerikReportViewerTemplate-FA-15.1.21.616.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	<Content Include="..\..\..\Reports\Hemosheet.trdp" Link="Reports\Hemosheet.trdp">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content>
+	<Content Include="..\..\..\Reports\HemoRecords.trdp" Link="Reports\HemoRecords.trdp">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content>
+    <Content Include="..\..\..\Reports\Hemosheet-CAH.trdp" Link="Reports\Hemosheet-CAH.trdp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+	<Content Include="..\..\..\Reports\Hemosheet-RAMA.trdp" Link="Reports\Hemosheet-RAMA.trdp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    
+  </ItemGroup>
+
+</Project>

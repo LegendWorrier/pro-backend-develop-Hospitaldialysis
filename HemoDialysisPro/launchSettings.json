@@ -1,0 +1,17 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "composeLaunchServiceName": "wasenshi.hemodialysispro.web.api",
+      "serviceActions": {
+        "postgressql": "StartWithoutDebugging",
+        "seq": "StartWithoutDebugging",
+        "wasenshi.hemodialysispro.report.api": "StartDebugging",
+        "wasenshi.hemodialysispro.web.api": "StartDebugging"
+      },
+      "composeLaunchAction": "LaunchBrowser",
+      "commandVersion": "1.0",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}"
+    }
+  }
+}

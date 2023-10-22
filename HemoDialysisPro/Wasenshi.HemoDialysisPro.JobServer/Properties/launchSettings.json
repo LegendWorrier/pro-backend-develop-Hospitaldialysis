@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Wasenshi.HemoDialysisPro.BackgroundTasks": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

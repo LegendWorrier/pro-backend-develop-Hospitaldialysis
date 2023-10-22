@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wasenshi.HemoDialysisPro.Web.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Wasenshi.HemoDialysisPro.Web.Api.AuthPolicy.AuthHandlers.RoleAndPermissionHandler">
+            <summary>
+            Built-in role auth handler already handle role. This one will additionally handle special permission like Unit's Head, or In-Charge Nurse.
+            (This will be OR logic to original built-in handler.)
+            </summary>
+        </member>
+        <member name="T:Wasenshi.HemoDialysisPro.Web.Api.BackgroundTasks.HemoBoxQueue">
+            <summary>
+            Simple queue that will only involve the current hemoserver instance.
+            </summary>
+        </member>
+        <member name="M:Wasenshi.HemoDialysisPro.Web.Api.Controllers.HemodialysisController.UpdateNurseInShiftToLatestShiftInfo(System.Guid)">
+            <summary>
+            This action will update the Nurse in Shift to current latest nurses list in the system calculated from hemosheet cycleStartTime
+            and link to target Nurse Shifts.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wasenshi.HemoDialysisPro.Web.Api.Controllers.RecordsController.CreateNewExecutionRecord(System.Guid,Wasenshi.HemoDialysisPro.ViewModels.CreateExecutionRecordViewModel)">
+            <summary>
+            Generic API for any execution record.
+            </summary>
+            <param name="hemoId"></param>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wasenshi.HemoDialysisPro.Web.Api.Controllers.RequestController.NotifyApprover(Wasenshi.HemoDialysisPro.Web.Api.ApproveRequest.RequestApprove,System.String[],System.String[],System.String,Wasenshi.HemoDialysisPro.Share.NotificationTarget)">
+            <summary>
+            Used to notify the target approver(s) and allow them to response with approve or deny.
+            </summary>
+            <param name="request"></param>
+            <param name="titleArgs"></param>
+            <param name="detailArgs"></param>
+            <param name="tag"></param>
+            <param name="extraTarget"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wasenshi.HemoDialysisPro.Web.Api.Controllers.RequestController.NotifyExtra(Wasenshi.HemoDialysisPro.Web.Api.ApproveRequest.RequestApprove,System.String[],System.String[],System.String[],System.String)">
+            <summary>
+            Used to notify also, to the requester (and any extra target specified in request) to inform what has been requested.
+            </summary>
+            <param name="request"></param>
+            <param name="titleArgs"></param>
+            <param name="detailArgs"></param>
+            <param name="action"></param>
+            <param name="tag"></param>
+        </member>
+        <member name="M:Wasenshi.HemoDialysisPro.Web.Api.Controllers.RequestController.ProcessApproveNotify(Wasenshi.HemoDialysisPro.Web.Api.ApproveRequest.RequestApprove,System.Boolean)">
+            <summary>
+            Notify back to the requester (and any extra target specified in request) for the result of a request (approved or rejected).
+            </summary>
+            <param name="request"></param>
+            <param name="deny"></param>
+            <exception cref="T:Wasenshi.HemoDialysisPro.Utils.AppException"></exception>
+        </member>
+        <member name="M:Wasenshi.HemoDialysisPro.Web.Api.Controllers.Utils.UtilsController.GenerateReportPDF">
+            <summary>
+            This is used only for testing.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Wasenshi.HemoDialysisPro.Web.Api.AuthenticationConfig">
+            <summary>
+            Common auth config template for general projects
+            </summary>
+        </member>
+        <member name="T:Wasenshi.HemoDialysisPro.Web.Api.Setup.HemoAuthConfig">
+            <summary>
+            Additional authorization config specific for HemoDialysis App
+            </summary>
+        </member>
+        <member name="T:Wasenshi.HemoDialysisPro.Web.Api.Setup.LogConfig.LoggingMiddleware">
+            <summary>
+            This middleware helps logging to be able to capture Response Body.
+            It buffers the body, let other middlewares use and read the body and then re-assign the original body for output.
+            </summary>
+        </member>
+        <member name="M:Wasenshi.HemoDialysisPro.Web.Api.WebSocket.CheckInHub.FindPatient(Wasenshi.HemoDialysisPro.Web.Api.WebSocket.PatientReq)">
+            <summary>
+            This method is called when patient card is touched on Check-In station, or manually find patient is executed.
+            The patient name will be on the screen. We will provide live status about pre/post weight of this patient.
+            </summary>
+            <param name="req"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wasenshi.HemoDialysisPro.Web.Api.WebSocket.HemoBoxHub.CallWithResponse``1(System.Linq.Expressions.Expression{System.Action{System.String}},System.String)">
+            <summary>
+            This private utils is intended to be used with callback method which must be manually defined by developer and called by the HemoBox.
+            The callback method should accept correlationId and finish a corresponding TaskCompletionSource stored in 'ResponseTasks' pool.
+            <br></br>
+            <br></br>
+            (Default timeout for response waiting is '5 seconds')
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="call"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:Wasenshi.HemoDialysisPro.Web.Api.WebSocket.UserHub.CheckUnitPermission(Wasenshi.HemoDialysisPro.Share.BedBoxInfo)">
+            <summary>
+            Check permission to send command to HemoBox. Only root admin can manipulate a box that has no unit assigned.
+            </summary>
+            <param name="bed"></param>
+        </member>
+    </members>
+</doc>
