@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Configurations>Debug;Release;UNIT_TEST</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AuthPolicy\Wasenshi.AuthPolicy\Wasenshi.AuthPolicy.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Models.AspNet\Wasenshi.HemoDialysisPro.Models.AspNet.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Share\Wasenshi.HemoDialysisPro.Share.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Utils\Wasenshi.HemoDialysisPro.Utils.csproj" />
+	<Using Include="Wasenshi.HemoDialysisPro.Constants"/>
+  </ItemGroup>
+
+</Project>

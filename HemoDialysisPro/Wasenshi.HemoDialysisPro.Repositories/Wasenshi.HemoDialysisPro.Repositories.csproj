@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Configurations>Debug;Release;UNIT_TEST</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Seeds\assessment-options.csv" />
+    <None Remove="Seeds\assessments.csv" />
+    <None Remove="Seeds\dialysates.csv" />
+    <None Remove="Seeds\labs.csv" />
+    <None Remove="Seeds\underlyings.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Seeds\assessment-options.csv" />
+    <EmbeddedResource Include="Seeds\assessments.csv" />
+    <EmbeddedResource Include="Seeds\dialysates.csv" />
+    <EmbeddedResource Include="Seeds\labs.csv" />
+    <EmbeddedResource Include="Seeds\underlyings.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Models.AspNet\Wasenshi.HemoDialysisPro.Models.AspNet.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Repository.Core\Wasenshi.HemoDialysisPro.Repository.Core.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.WebUtils\Wasenshi.HemoDialysisPro.WebUtils.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,42 @@
+﻿Id,Name,Unit,Category,UpperLimit,LowerLimit,UpperLimitM,LowerLimitM,UpperLimitF,LowerLimitF,IsYesNo,TRT
+1,Albumin,g/dL,3,,,,,,,f,13
+2,Anti HBc,-,6,1,0,,,,,t,27
+3,Anti HBs,-,6,1,0,,,,,t,26
+4,Anti HCV,-,6,1,0,,,,,t,28
+5,Anti HIV,-,6,1,0,,,,,t,29
+6,AP,U/L,1,,,,,,,f,12
+7,Ca,mg/dL,3,,,,,,,f,9
+8,Cholesterol,mg/dL,6,,,,,,,f,15
+9,Cl,mmol/L,3,,,,,,,f,7
+10,CO2,mmol/L,3,,,,,,,f,0
+11,Cr,mg/dL,3,,,1.2,0.6,1.1,0.5,f,3
+12,DB,mg/dL,1,,,,,,,f,0
+13,eGFR,ml/min/1.73m²,1,,90,,,,,f,0
+14,Ferritin,ng/ml,6,,,,,,,f,23
+15,FPG,mg/dL,1,,,,,,,f,1
+16,Globulin,g/dL,1,,,,,,,f,0
+17,Hb,g/dL,1,,,17.4,13,16,12,f,20
+18,HbA1C,%,6,,,,,,,f,2
+19,HBsAg,-,6,1,0,,,,,t,25
+20,Hct,%,1,,,50,40,47,35,f,19
+21,HDL,mg/dL,6,,,,,,,f,17
+22,IPTH,pg/ml,6,,,,,,,f,11
+23,K,mmol/L,3,,,,,,,f,6
+24,LDL,mg/dL,6,,,,,,,f,18
+25,Na,mmol/L,3,,,,,,,f,5
+26,nPCR,g/kg/d,3,1.2,1,,,,,f,0
+27,Platelet count,10³/μL,1,,,,,,,f,0
+28,PO4,mg/dL,3,,,,,,,f,10
+29,Serum iron,μg/dl,6,,,,,,,f,21
+30,SGOT,U/L,1,,,,,,,f,0
+31,SGPT,U/L,1,,,,,,,f,0
+32,spKT/V,-,1,,,,,,,f,0
+33,Stool occult blood,-,1,,,,,,,f,0
+34,TB,mg/dL,1,,,,,,,f,0
+35,TIBC,μg/dl,6,,,,,,,f,22
+36,Total protein,g/dL,1,,,,,,,f,14
+37,Triglyceride,mg/dL,6,,,,,,,f,16
+38,TSAT,%,6,,,,,,,f,24
+39,Uric acid,mg/dL,3,,,,,,,f,4
+40,VLDL,mg/dL,6,,,,,,,f,0
+41,WBC,10³/μL,1,,,,,,,f,0

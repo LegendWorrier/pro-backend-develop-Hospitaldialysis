@@ -1,0 +1,114 @@
+﻿@using Wasenshi.HemoDialysisPro.Models;
+@model IEnumerable<Wasenshi.HemoDialysisPro.Share.BedBoxInfo>
+
+@{
+    ViewData["Title"] = "HemoBox Log";
+    Layout = null;
+
+    var unitList = ViewData["unitList"] as IEnumerable<Unit>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HemoBox Log</title>
+    <style>
+        .table thead {
+            background: beige;
+        }
+
+        .table td {
+            text-align: center;
+            border: #a19171 solid 1px;
+        }
+
+        .name {
+            min-width: 150px;
+        }
+
+        .status {
+            min-width: 80px;
+        }
+
+        .table td.status.online {
+            background: azure;
+            color: lime;
+            font-weight: bold;
+        }
+
+        .table td.status.offline {
+            background: gainsboro;
+            color: cadetblue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="status">
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MacAddress)
+            </th>
+            <th class="name">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                Unit
+            </th>
+            <th>
+                Has Patient
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sending)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsRegistered)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="status @(item.Online ? "online" : "offline")">
+                @(item.Online ? "Online" : "Offline")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MacAddress)
+            </td>
+            <td class="name">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @(item.UnitId.HasValue ? unitList.FirstOrDefault(x => x.Id == item.UnitId).Name : "Unknown")
+            </td>
+            <td>
+                @Html.CheckBox("HasPatient", !string.IsNullOrWhiteSpace(item.PatientId), new { disabled = "disabled" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sending)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsRegistered)
+            </td>
+            <td>
+                @Html.ActionLink("GetLog", "GetLog", new { macAddress = item.MacAddress }, new { target = "_blank" }) |
+                @Html.ActionLink("GetLog1", "GetLog", new { macAddress = item.MacAddress, logNo = 1 }, new { target = "_blank" }) |
+                @Html.ActionLink("GetLog2", "GetLog", new { macAddress = item.MacAddress, logNo = 2 }, new { target = "_blank" }) |
+                @Html.ActionLink("GetLog3", "GetLog", new { macAddress = item.MacAddress, logNo = 3 }, new { target = "_blank" }) |
+                @Html.ActionLink("GetLog4", "GetLog", new { macAddress = item.MacAddress, logNo = 4 }, new { target = "_blank" }) |
+                @Html.ActionLink("GetLog5", "GetLog", new { macAddress = item.MacAddress, logNo = 5 }, new { target = "_blank" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

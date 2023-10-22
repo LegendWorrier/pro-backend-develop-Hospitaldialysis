@@ -1,0 +1,71 @@
+version: '3.4'
+
+services:
+  wasenshi.hemodialysispro.web.api:
+    container_name: api
+    image: ${DOCKER_REGISTRY-}wasenshihemodialysisprowebapi
+    env_file:
+      - environment.env
+    build:
+      context: .
+      dockerfile: Wasenshi.HemoDialysisPro.Web.Api/Dockerfile
+    depends_on:
+      - postgressql
+      - redis
+      - seq
+    ports:
+      - '8200:80'
+      - '8300:443'
+    restart: always
+  wasenshi.hemodialysispro.report.api:
+    container_name: report
+    image: ${DOCKER_REGISTRY-}wasenshihemodialysisproreportapi
+    env_file:
+      - environment.env
+    build:
+      context: .
+      dockerfile: Wasenshi.HemoDialysisPro.Report.Api/Dockerfile
+    depends_on:
+      - postgressql
+      - seq
+    ports:
+      - '8400:80'
+      - '8500:443'
+    restart: always
+  wasenshi.hemodialysispro.jobserver:
+    container_name: jobs
+    image: ${DOCKER_REGISTRY-}wasenshihemodialysisprojobserver
+    env_file:
+      - environment.env
+    build:
+      context: .
+      dockerfile: Wasenshi.HemoDialysisPro.JobServer/Dockerfile
+    depends_on:
+      - postgressql
+      - redis
+      - seq
+  postgressql:
+    container_name: db
+    env_file:
+      - environment.env
+    restart: always
+    ports:
+      - '5431:5432'
+    image: postgres
+  seq:
+    container_name: seq
+    environment:
+      - ACCEPT_EULA=Y
+    volumes:
+      - '/mnt/d/Publish/logs/hemodialysis-pro-backend:/data'
+    ports:
+      - '5341:80'
+    image: datalust/seq
+  redis:
+    container_name: redis
+    restart: always
+    image: redis/redis-stack
+    ports:
+      - '6379:6379'
+      #- '26379:26379'
+      - '8001:8001'

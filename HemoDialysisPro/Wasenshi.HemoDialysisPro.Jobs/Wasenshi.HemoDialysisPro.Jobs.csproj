@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Configurations>Debug;Release;UNIT_TEST</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire.Core" Version="1.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ServiceStack\ServiceStack.RedisMq\ServiceStack.RedisMq.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Repository.Core\Wasenshi.HemoDialysisPro.Repository.Core.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Services.Core\Wasenshi.HemoDialysisPro.Services.Core.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Share\Wasenshi.HemoDialysisPro.Share.csproj" />
+  </ItemGroup>
+
+</Project>

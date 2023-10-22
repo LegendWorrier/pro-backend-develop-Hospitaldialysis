@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+	<DefineConstants Condition=" '$(IsTest)' == 'true' ">$(DefineConstants);TEST</DefineConstants>
+	<Configurations>Debug;Release;UNIT_TEST</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UNIT_TEST|AnyCPU'">
+    <DefineConstants>$(DefineConstants);TEST;RELEASE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="6.0.16" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ServiceStack\ServiceStack\src\ServiceStack.Interfaces\ServiceStack.Interfaces.Core.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Constants\Wasenshi.HemoDialysisPro.Constants.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Models\Wasenshi.HemoDialysisPro.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Fingerprint.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Fingerprint.tt</DependentUpon>
+    </Compile>
+    <Compile Update="FingerprintCheck.cs">
+      <DependentUpon>FingerprintCheck.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="FingerprintCheck.tt">
+      <LastGenOutput>FingerprintCheck.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="Fingerprint.tt">
+      <LastGenOutput>Fingerprint.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

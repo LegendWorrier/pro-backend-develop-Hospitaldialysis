@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Configurations>Debug;Release;UNIT_TEST</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="IApplicationDbContext.cs~RF17d17d56.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EFCoreExtensions\src\Zomp.EFCore.WindowFunctions.Npgsql\Zomp.EFCore.WindowFunctions.Npgsql.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Repository.Interfaces\Wasenshi.HemoDialysisPro.Repository.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

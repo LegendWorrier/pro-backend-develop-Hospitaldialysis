@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Configurations>Debug;Release;UNIT_TEST</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Profiles\StatProfile.cs~RF3467391e.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Collection" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Collection.EntityFrameworkCore" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Models.AspNet\Wasenshi.HemoDialysisPro.Models.AspNet.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Models\Wasenshi.HemoDialysisPro.Models.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.ViewModels\Wasenshi.HemoDialysisPro.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

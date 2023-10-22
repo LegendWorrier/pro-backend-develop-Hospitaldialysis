@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+	<DefineConstants Condition=" '$(IsTest)' == 'true' ">$(DefineConstants);TEST</DefineConstants>
+    <Configurations>Debug;Release;UNIT_TEST</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.30.0" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="2.88.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AuthPolicy\Wasenshi.AuthPolicy\Wasenshi.AuthPolicy.csproj" />
+    <ProjectReference Include="..\..\CsvHelper.Excel\src\CsvHelper.Excel\CsvHelper.Excel.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Models\Wasenshi.HemoDialysisPro.Models.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Repositories\Wasenshi.HemoDialysisPro.Repositories.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Services.Core\Wasenshi.HemoDialysisPro.Services.Core.csproj" />
+    <ProjectReference Include="..\Wasenshi.HemoDialysisPro.Utils\Wasenshi.HemoDialysisPro.Utils.csproj" />
+  </ItemGroup>
+
+</Project>
